@@ -1,0 +1,28 @@
+
+
+
+ <div class=" container jumbotron">
+    <h1>Spurs Scraper <img src="spurslogo.png" height="150px" width="90px"></h1>
+</div>
+
+
+
+
+
+<div id="articleHolder">
+    <div class="container">
+    {{#each data}}
+
+   <div class="linkHolder" data-id={{id}}> 
+        <a href={{link}}><h5>{{title}}</h5></a>
+        <button class="viewComments  btn">View Comments</button>
+   </div>
+
+    {{/each}}
+    </div>
+
+
+
+
+
+
