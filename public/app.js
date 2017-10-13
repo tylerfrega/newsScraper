@@ -16,14 +16,13 @@ $(document).ready(function(){
           .done(function(data){
             console.log(data)
             data.comment.forEach(function(element) {
-                linkHolder.append(`<div> ${element.body} </div>`)
+                linkHolder.append(`<div class="comment"> ${element.body} </div>`)
                 
             });
-            //$(this).parent().append(`<div>${data}</div>`)
           })
 
         var id = linkHolder.attr('data-id');
-        linkHolder.append(` <input id="${id}"></input> <button class="submit">submit comment</button>`);
+        linkHolder.append(` <input type="text" class="form-control" id="${id}"></input> <button class="submit btn">submit comment</button>`);
         $(this).hide()
     }
 
@@ -31,9 +30,8 @@ $(document).ready(function(){
     function postComment(){
         var thisId = $(this).parent().attr("data-id");
         var linkHolder = $(this).parent(); 
-        let val = $(`#${thisId}`).val();
+        var commentText = $(`#${thisId}`).val();
        
-        
             $.ajax({
             method: "POST",
             url: "/articles/" + thisId,
@@ -41,10 +39,8 @@ $(document).ready(function(){
                 body: $(`#${thisId}`).val() 
             }
             })
-            // With that done
             .done(function(data) {
-                // Empty the notes section
-                linkHolder.append(`<div> ${val} </div>`)
+                linkHolder.append(`<div class="comment"> ${commentText} </div>`)
             });
         
     }
